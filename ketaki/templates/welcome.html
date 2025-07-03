@@ -1,0 +1,220 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Ketaki 💕</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background-image: url("{% static 'img/welcome.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Cursive', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: rgba(255, 192, 203, 0.25);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+            font-size: 1.2rem;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .navbar a.letter {
+            color: rgb(255, 252, 253);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .navbar a.letter:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #ff69b4;
+        }
+
+        .navbar .icons a {
+            margin-left: 12px;
+            color: rgb(255, 94, 121);
+            font-size: 1.3rem;
+            transition: 0.3s ease;
+        }
+
+        .navbar .icons a:hover {
+            color: #ff69b4;
+            transform: scale(1.2);
+        }
+
+        .greeting {
+            margin-top: 150px;
+            text-align: center;
+            animation: fadeIn 2s ease;
+            padding: 0 5vw;
+        }
+
+        .greeting h1 {
+            font-size: 2.5rem;
+            color: #ffe0f0;
+            text-shadow: 2px 2px 12px #ff8fc9;
+        }
+
+        .subtext {
+            font-size: 1.2rem;
+            color: #ffe6f0;
+            border: #050505;
+            margin-top: 15px;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        .poem {
+            background: rgba(251, 150, 150, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(255, 76, 106, 0.7);
+            backdrop-filter: blur(12px);
+            padding: 20px 25px;
+            margin: 50px auto 40px;
+            font-size: 1.1rem;
+            color: #050505;
+            max-width: 800px;
+            line-height: 1.8;
+            font-family: 'Segoe UI', cursive;
+            animation: fadeInPoem 3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInPoem {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .greeting {
+                margin-top: 30vh;
+            }
+
+            .greeting h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtext {
+                font-size: 1rem;
+            }
+
+            .poem {
+                font-size: 1rem;
+                margin: 2px 1px;
+            }
+
+            .navbar {
+                flex-direction: column;
+                font-size: 1rem;
+            }
+
+            .navbar .icons a {
+                font-size: 1.2rem;
+                margin-left: 0;
+            }
+        }
+    </style>
+
+    <script>
+        function confirmLogout() {
+            if (confirm("Are you sure you want to log out and leave this world of love? 💔")) {
+                window.location.href = "/logout/";
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="d-flex flex-wrap gap-2">
+            <a href="/love/K" class="letter {% if letter == 'K' %}active{% endif %}">K</a>
+            <a href="/love/E" class="letter {% if letter == 'E' %}active{% endif %}">E</a>
+            <a href="/love/T" class="letter {% if letter == 'T' %}active{% endif %}">T</a>
+            <a href="/love/A" class="letter {% if letter == 'A' %}active{% endif %}">A</a>
+            <a href="/love/K2" class="letter {% if letter == 'K2' %}active{% endif %}">K</a>
+            <a href="/love/I" class="letter {% if letter == 'I' %}active{% endif %}">I</a>
+        </div>
+        <div class="icons d-flex gap-3">
+            <a href="/welcome" title="Home"><i class="fas fa-heart"></i></a>
+            <a href="javascript:void(0);" onclick="confirmLogout()" title="Logout"><i
+                    class="fas fa-sign-out-alt"></i></a>
+        </div>
+    </div>
+
+    <div class="greeting">
+        <h1 style="
+                color: #fff;
+                text-shadow:
+                    -1px -1px 0 #ff69b4,
+                    1px -1px 0 #ff69b4,
+                    -1px  1px 0 #ff69b4,
+                    1px  1px 0 #ff69b4;
+            ">
+            Hello, my dearest Ketaki 💖 I Love You
+        </h1>
+
+
+        <!-- <p class="subtext" style="
+                color: #fff;
+                text-shadow:
+                    -1px -1px 0 #ff69b4,
+                    1px -1px 0 #ff69b4,
+                    -1px  1px 0 #ff69b4,
+                    1px  1px 0 #ff69b4;
+            ">
+            You're the melody in my heart and the meaning of my every moment.
+        </p> -->
+
+
+        <div class="poem">
+            <h3> You're the melody in my heart and the meaning of my every moment.</h3>
+            केतकी, तुझ्या हसण्यात सुर्याची किरणं दिसतात,<br>
+            तुझ्या स्पर्शात आयुष्याचं खरं सुख मला सापडतं.<br>
+            तुझं नाव घेतलं तरी मन भरून येतं,<br>
+            तू नसलीस तर माझं आभाळच रिकामं वाटतं.<br>
+            प्रत्येक श्वासात केवळ तूच आहेस,<br>
+            माझं जग, माझं प्रेम — सर्वस्व तूच आहेस. 💞
+        </div>
+    </div>
+
+</body>
+
+</html>

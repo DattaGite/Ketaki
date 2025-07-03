@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | For Ketaki</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            background-image: url("{% static 'img/romantic.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            font-family: 'Cursive', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            max-width: 100vw;
+            /* Add this */
+            position: relative;
+            /* Add this */
+        }
+
+        .login-box {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8vw 6vw;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(255, 192, 203, 0.7);
+            animation: fadeIn 2s ease-in;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        input {
+            padding: 12px;
+            margin: 10px 0;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: pink;
+            color: black;
+            font-weight: bold;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: hotpink;
+            color: white;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ffe0f0;
+            text-shadow: 1px 1px 5px #ff7eb9;
+            font-size: 1.5rem;
+        }
+
+        .error-msg {
+            margin-top: 10px;
+            color: #ffb3c6;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart {
+            position: absolute;
+            color: pink;
+            font-size: 18px;
+            animation: floatHearts 8s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .login-box {
+                padding: 6vw 5vw;
+            }
+
+            button,
+            input {
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const heartCount = 20;
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerHTML = "<i class='fas fa-heart'></i>";
+                heart.style.left = Math.random() * 85 + "vw"; 
+                heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+                heart.style.fontSize = (14 + Math.random() * 20) + "px";
+                document.body.appendChild(heart);
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <form method="post" class="login-box">
+        {% csrf_token %}
+        <h2>Welcome My Love 💖</h2>
+        <input type="text" name="username" placeholder="Enter your name" required><br>
+        <input type="password" name="password" placeholder="Enter your password" required><br>
+        <button type="submit">Enter My Heart</button>
+        {% if messages %}
+        <div class="error-msg">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </form>
+</body>
+
+</html>

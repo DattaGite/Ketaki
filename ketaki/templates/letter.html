@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter - {{ letter }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            background-image: url("{% static 'img/heart.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Cursive', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: rgba(255, 192, 203, 0.25);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+            font-size: 1.2rem;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .navbar a.letter {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .navbar a.letter.active,
+        .navbar a.letter:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #ff69b4;
+        }
+
+        .navbar .icons a {
+            color: rgb(255, 94, 121);
+            font-size: 1.3rem;
+            transition: 0.3s ease;
+        }
+
+        .navbar .icons a:hover {
+            color: #ff69b4;
+            transform: scale(1.2);
+        }
+
+        .content {
+            margin-top: 8vh;
+            text-align: center;
+            animation: fadeIn 2s ease;
+            padding: 0 5vw;
+        }
+
+        .content h1 {
+            font-size: 2.5rem;
+            color: #ffe0f0;
+            text-shadow: 2px 2px 12px #ff8fc9;
+            margin-bottom: 140px;
+        }
+
+        .content p {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(255, 192, 203, 0.3);
+            padding: 25px;
+            font-size: 1.1rem;
+            color: #ffebf2;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-family: 'Segoe UI', cursive;
+            animation: fadeInPoem 3s ease-in-out;
+            margin-top: 200px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInPoem {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                font-size: 1rem;
+                flex-direction: column;
+                padding: 10px;
+                gap: 5px;
+            }
+
+            .content h1 {
+                font-size: 1.8rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+                padding: 20px;
+            }
+
+            .navbar .icons a {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+
+    <script>
+        function confirmLogout() {
+            if (confirm("Are you sure you want to log out and leave this world of love? 💔")) {
+                window.location.href = "/logout/";
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="navbar px-4">
+        <div class="d-flex flex-wrap gap-2">
+            <a href="/love/K" class="letter {% if letter == 'K' %}active{% endif %}">K</a>
+            <a href="/love/E" class="letter {% if letter == 'E' %}active{% endif %}">E</a>
+            <a href="/love/T" class="letter {% if letter == 'T' %}active{% endif %}">T</a>
+            <a href="/love/A" class="letter {% if letter == 'A' %}active{% endif %}">A</a>
+            <a href="/love/K2" class="letter {% if letter == 'K2' %}active{% endif %}">K</a>
+            <a href="/love/I" class="letter {% if letter == 'I' %}active{% endif %}">I</a>
+        </div>
+        <div class="icons d-flex gap-3">
+            <a href="/welcome" title="Home"><i class="fas fa-heart"></i></a>
+            <a href="javascript:void(0);" onclick="confirmLogout()" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Letter {{ letter }}</h1>
+        <p>{{ message }}</p>
+    </div>
+
+</body>
+
+</html>
